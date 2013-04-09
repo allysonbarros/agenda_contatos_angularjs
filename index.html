@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>Agenda de Contatos</title>
+	
+	<meta charset=utf-8>
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/custom.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body ng-controller="ContatosController">
+	<div class="container-fluid">
+		<h1 class="page-header">
+			Agenda de Contatos
+		</h1>
+
+		<div class="">
+			<h3>
+				Meus Contatos
+			</h3>
+
+			<table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Twitter</th>
+            <th>Facebook</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="contato in contatos">
+            <td>{{contatos.indexOf(contato)+1}}</td>
+            <td>{{contato.nome}}</td>
+            <td>{{contato.email}}</td>
+            <td>{{contato.telefone}}</td>
+            <td>{{contato.twitter}}</td>
+            <td>{{contato.facebook}}</td>
+            <td>
+            	<a href="javascript:void(0)" ng-click="removeContato(contatos.indexOf(contato))" class="btn btn-danger">Excluir</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>#</td>
+            <td>
+            	<input type="text" class="input-medium" ng-model="novoContato.nome" placeholder="Nome">
+            </td>
+            <td>
+            	<input type="text" class="input-medium" ng-model="novoContato.email" placeholder="Email">
+            </td>
+            <td>
+            	<input type="text" class="input-medium" ng-model="novoContato.telefone" placeholder="Telefone">
+            </td>
+            <td>
+            	<input type="text" class="input-medium" ng-model="novoContato.twitter" placeholder="Twitter">
+            </td>
+            <td>
+            	<input type="text" class="input-medium" ng-model="novoContato.facebook"  placeholder="Facebook">
+            </td>
+            <td>
+            	<a href="javascript:void(0)" ng-click="addContato()" class="btn btn-inverse">Cadatrar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+			<h5>Nº de Contatos Cadastrados: {{contatos.length}}</h5>
+		</div>
+	</div>
+</body>
+</html>
